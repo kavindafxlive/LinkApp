@@ -13,6 +13,6 @@ public class FirstPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_page);
 
-        new Handler().postDelayed(new Runnable() { @Override public void run() { Intent i=new Intent(FirstPage.this,MainActivity.class); startActivity(i); } }, 3000);
+        new Handler().postDelayed(new Runnable() { @Override public void run() { Intent i=new Intent(FirstPage.this, MainActivity.class); startActivity(i); } }, 3000);
     }
 }
