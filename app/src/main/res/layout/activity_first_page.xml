@@ -4,18 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".FirstPage">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="555dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="153dp"
         android:fontFamily="@font/thinitalic"
-        android:text="Loading"
+        android:text="Loading..."
         android:textColor="#000000"
-        android:textSize="40sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="564dp" />
+        android:textSize="40px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="137dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="177dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="448dp"
+        android:src="@drawable/whkicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/extrabold"
+        android:text="HAWK SEO TOOLS"
+        android:textSize="55px"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints,NotSibling" />
+
+    <TextView
+        android:id="@id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lightitalic"
+        android:text="Webmastering made easy"
+        android:textSize="35px"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints,NotSibling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
