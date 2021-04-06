@@ -8,9 +8,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,9 +31,14 @@ import com.krs.model.PageLimit;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         tvState = findViewById(R.id.tvState);
         tvState1 = findViewById(R.id.tvState1);
         btnPing = findViewById(R.id.btnPing);
@@ -79,10 +91,21 @@ public class MainActivity extends AppCompatActivity {
         btnPing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (etUrl.getText().toString().isEmpty()){
-                    Toast.makeText(MainActivity.this, "Please enter url", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please enter URL", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (IsValidUrl(etUrl.getText().toString())){
+                    Toast.makeText(MainActivity.this, "Please check URL", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(etUrl.getText().toString().startsWith("https://")|| etUrl.getText().toString().contains("https://")){
+                    Toast.makeText(MainActivity.this, "Please enter URL only http ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                
                 if (etKeywords.getText().toString().isEmpty()){
                     Toast.makeText(MainActivity.this, "Please enter keyword", Toast.LENGTH_SHORT).show();
                     return;
@@ -100,6 +123,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private static boolean IsValidUrl (String urlString){
+        try {
+            URL url = new URL(urlString);
+            return URLUtil.isValidUrl(urlString) && Patterns.WEB_URL.matcher(urlString).matches();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 //    public void getSelectedUser(View v) {
